@@ -2,7 +2,8 @@ module Account::TeamsHelper
   def current_team
     # TODO We do not want this to be based on the `current_team_id`.
     # TODO We want this to be based on the current resource being loaded.
-    team = current_user.memberships.find_by(team_id: current_user.current_team_id)
+    membership = current_user.memberships.find_by(team_id: current_user.current_team_id)
+    team = membership.team if membership
     unless team
       membership = current_user.memberships.first
       team = membership.team if membership
