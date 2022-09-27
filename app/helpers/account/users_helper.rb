@@ -25,7 +25,7 @@ module Account::UsersHelper
   end
 
   def membership_profile_photo_url(membership)
-    if membership.user
+    if membership && membership.user
       user_profile_photo_url(membership.user)
     else
       profile_photo_for(
