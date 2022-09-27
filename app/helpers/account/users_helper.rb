@@ -35,6 +35,9 @@ module Account::UsersHelper
         last_name: membership.user_last_name
       )
     end
+  rescue => e
+    puts "Erro em membership_profile_photo_url: #{e.message}"
+    nil
   end
 
   def profile_header_photo_for(url: nil, email: nil, first_name: nil, last_name: nil)
