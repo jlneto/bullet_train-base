@@ -25,7 +25,8 @@ module Account::UsersHelper
   end
 
   def membership_profile_photo_url(membership)
-    if membership && membership.user
+    return nil unless membership
+    if membership.user
       user_profile_photo_url(membership.user)
     else
       profile_photo_for(
@@ -35,9 +36,6 @@ module Account::UsersHelper
         last_name: membership.user_last_name
       )
     end
-  rescue => e
-    puts "Erro em membership_profile_photo_url: #{e.message}"
-    nil
   end
 
   def profile_header_photo_for(url: nil, email: nil, first_name: nil, last_name: nil)
